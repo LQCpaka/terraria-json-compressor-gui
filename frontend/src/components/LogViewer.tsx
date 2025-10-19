@@ -1,5 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { cn } from '../lib/utils'
+import { DESIRE_APP_LOGO } from '../constants/desire'
 
 interface LogViewerProps {
     logs: string
@@ -18,8 +19,13 @@ const LogViewer = ({ logs, height, width }: LogViewerProps) => {
 
     return (
         <div>
-            <div className={cn('bg-gray-900 text-green-400 font-mono text-left p-4 overflow-auto text-sm rounded-lg z-0', height, width)} ref={logRef}>
+            <div className={cn('bg-gray-900 text-green-400 font-mono text-left p-4 overflow-auto text-md rounded-lg z-0', height, width)} ref={logRef}>
                 <pre className='whitespace-pre-wrap'>
+                    <br/>
+                    <p className='text-center bg-gradient-to-b from-yellow-400 to-purple-600 bg-clip-text text-transparent'>
+                        {DESIRE_APP_LOGO}
+                    </p>
+                    <br/><br/>
                     <code>{logs}</code>
                 </pre>
             </div>
