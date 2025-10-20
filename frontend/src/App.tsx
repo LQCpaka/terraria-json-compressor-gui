@@ -1,24 +1,28 @@
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 import logo from './assets/images/logo-universal.png';
 import './App.css';
 import LogViewer from './components/LogViewer';
-import { GetFirstFile, SelectFile } from '../wailsjs/go/backend/App';
-import { DESIRE_APP_NAME, DESIRE_APP_VERSION,DESIRE_APP_DESCRIPTION,DESIRE_APP_APPLICATION } from './constants/desire';
+import { GetFirstFile, SelectFile, PreviewCSVFile } from '../wailsjs/go/backend/App';
+
+interface LogEntry {
+    level: string;
+    message: string;
+}
 
 // Gọi hàm ListFolder
 async function loadFolder(path: string) {
-  try {
-    const files = await GetFirstFile(path);
-    console.log('Files:', files);
-    return files;
-  } catch (error) {
-    console.error('Error listing folder:', error);
-  }
+    try {
+        const files = await GetFirstFile(path);
+        console.log('Files:', files);
+        return files;
+    } catch (error) {
+        console.error('Error listing folder:', error);
+    }
 }
 
 function App() {
     const [folderPath, setFolderPath] = useState('');
-
+    const [LogText, setLogText] = useState<LogEntry[]>([]);
     const handleBrowseClick = async () => {
         try {
             const selectedPath = await SelectFile();
@@ -32,13 +36,48 @@ function App() {
         }
     };
 
+    const handlePreviewClick = async () => {
+        try {
+            const result = await PreviewCSVFile(folderPath);
+            setLogText(prevItem => [...prevItem, ...result]);
+        } catch (error) {
+            console.error('Error previewing file:', error);
+            setLogText(prevItem => [...prevItem, { level: 'error', message: `Error: ${error}` }]);
+        }
+    }
+
+    const renderLog = (log: LogEntry, index: number) => {
+        const colorMap: Record<string, string> = {
+            error: 'text-red-700',
+            warn: 'text-yellow-700',
+            info: 'text-slate-400',
+            ok: 'text-green-600',
+            summary: 'text-blue-600 font-bold'
+        };
+        
+        const colorClass = colorMap[log.level] || 'text-white';
+        const levelText = log.level.toUpperCase();
+        
+        return (
+            <div key={index} className={`${colorClass} cursor-text select-text`}>
+                [{levelText}] {log.message}
+            </div>
+        );
+    };
+
     return (
-        <div className='m-4 h-full' id="App">
-            <LogViewer logs={`${DESIRE_APP_NAME}\n${DESIRE_APP_VERSION}\n${DESIRE_APP_DESCRIPTION}\n${DESIRE_APP_APPLICATION}`} height="h-[80vh]" width="w-full" />
-            <div className='mt-12 flex flex-row justify-between items-center'>
+        <div className='flex flex-col h-screen p-4 overflow-hidden' id="App">
+            <div className='flex-1 overflow-hidden'>
+                <LogViewer logs={
+                    <div className="log-content">
+                        {LogText.map((log, index) => renderLog(log, index))}
+                    </div>
+                } height="h-[85vh]" width="w-full" />
+            </div>
+            <div className='mt-4 flex flex-row justify-between items-center flex-shrink-0'>
                 <div className='flex gap-4'>
-                    <input 
-                        type='text' 
+                    <input
+                        type='text'
                         className='rounded-md p-2 w-[30vw] bg-gray-700'
                         value={folderPath}
                         onChange={(e) => setFolderPath(e.target.value)}
@@ -48,7 +87,7 @@ function App() {
                     <button onClick={handleBrowseClick} className='bg-[#0a0a0a] px-4 rounded-md hover:bg-[#2b2a2a] transition-colors'>Browse</button>
                 </div>
                 <div className='flex gap-4'>
-                    <button className='bg-[#0a0a0a] px-4 py-2 rounded-md hover:bg-[#2b2a2a] transition-colors ml-8'>Preview File</button>
+                    <button onClick={handlePreviewClick} className='bg-[#0a0a0a] px-4 py-2 rounded-md hover:bg-[#2b2a2a] transition-colors ml-8'>Preview File</button>
                     <button className='bg-[#0a0a0a] px-4 py-2 rounded-md hover:bg-[#2b2a2a] transition-colors'>Start Compress</button>
                 </div>
             </div>

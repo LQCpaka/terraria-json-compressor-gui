@@ -31,3 +31,7 @@ func (a *App) GetFirstFile(folderPath string) (string, error) {
 func (a *App) SelectFile() (string, error) {
 	return handlers.OpenFileDialog(a.ctx)
 }
+
+func (a *App) PreviewCSVFile(filePath string) ([]handlers.LogEntry, error) {
+	return handlers.PreviewCSVFile(a.ctx, filePath)
+}

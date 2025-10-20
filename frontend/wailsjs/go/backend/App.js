@@ -6,6 +6,10 @@ export function GetFirstFile(arg1) {
   return window['go']['backend']['App']['GetFirstFile'](arg1);
 }
 
+export function PreviewCSVFile(arg1) {
+  return window['go']['backend']['App']['PreviewCSVFile'](arg1);
+}
+
 export function SelectFile() {
   return window['go']['backend']['App']['SelectFile']();
 }
