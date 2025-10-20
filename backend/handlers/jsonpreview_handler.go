@@ -105,10 +105,7 @@ func PreviewCSVFile(ctx context.Context, filePath string) ([]LogEntry, error) {
 			errCount++
 			logs = append(logs, LogEntry{Level: "error", Message: fmt.Sprintf("Line %d: invalid UTF-8.", lineNo+1)})
 		}
-		if strings.ContainsAny(key, " \t") {
-			warnCount++
-			logs = append(logs, LogEntry{Level: "warn", Message: fmt.Sprintf("Line %d: Key has white space (should be Some.Key).", lineNo+1)})
-		}
+		// Removed whitespace warning - underscores are allowed in keys
 		if prevLine, dup := keys[key]; dup {
 			warnCount++
 			logs = append(logs, LogEntry{Level: "warn", Message: fmt.Sprintf("Line %d: Key same with line %d. Value gonna be override after convert.", lineNo+1, prevLine)})

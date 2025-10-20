@@ -2,7 +2,7 @@ import { ReactNode, useState } from 'react';
 import logo from './assets/images/logo-universal.png';
 import './App.css';
 import LogViewer from './components/LogViewer';
-import { GetFirstFile, SelectFile, PreviewCSVFile } from '../wailsjs/go/backend/App';
+import { GetFirstFile, SelectFile, PreviewCSVFile, CompressAndSave, SaveFile } from '../wailsjs/go/backend/App';
 
 interface LogEntry {
     level: string;
@@ -23,6 +23,8 @@ async function loadFolder(path: string) {
 function App() {
     const [folderPath, setFolderPath] = useState('');
     const [LogText, setLogText] = useState<LogEntry[]>([]);
+    const [isCompressing, setIsCompressing] = useState(false);
+
     const handleBrowseClick = async () => {
         try {
             const selectedPath = await SelectFile();
@@ -45,6 +47,28 @@ function App() {
             setLogText(prevItem => [...prevItem, { level: 'error', message: `Error: ${error}` }]);
         }
     }
+
+    const handleCompressClick = async () => {
+        if (!folderPath) {
+            setLogText(prevItem => [...prevItem, { level: 'error', message: 'Please select a file first!' }]);
+            return;
+        }
+
+        setIsCompressing(true);
+        try {
+            // Compress and save in one step
+            const logs = await CompressAndSave(folderPath);
+            setLogText(prevItem => [...prevItem, ...logs]);
+        } catch (error) {
+            console.error('Error compressing file:', error);
+            setLogText(prevItem => [...prevItem, { 
+                level: 'error', 
+                message: `Compression failed: ${error}` 
+            }]);
+        } finally {
+            setIsCompressing(false);
+        }
+    };
 
     const renderLog = (log: LogEntry, index: number) => {
         const colorMap: Record<string, string> = {
@@ -88,7 +112,13 @@ function App() {
                 </div>
                 <div className='flex gap-4'>
                     <button onClick={handlePreviewClick} className='bg-[#0a0a0a] px-4 py-2 rounded-md hover:bg-[#2b2a2a] transition-colors ml-8'>Preview File</button>
-                    <button className='bg-[#0a0a0a] px-4 py-2 rounded-md hover:bg-[#2b2a2a] transition-colors'>Start Compress</button>
+                    <button 
+                        onClick={handleCompressClick} 
+                        disabled={isCompressing}
+                        className='bg-[#0a0a0a] px-4 py-2 rounded-md hover:bg-[#2b2a2a] transition-colors disabled:opacity-50 disabled:cursor-not-allowed'
+                    >
+                        {isCompressing ? 'Compressing...' : 'Start Compress'}
+                    </button>
                 </div>
             </div>
         </div>
