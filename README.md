@@ -13,4 +13,5 @@
   <img src="https://img.shields.io/badge/Terraria-JSON-red">
 
 </p>
+
 # TERRARIA JSON COMPRESSOR GUI
