@@ -10,7 +10,6 @@ import (
 	"os"
 	"path/filepath"
 	"strings"
-	"unicode"
 	"unicode/utf8"
 )
 
@@ -194,13 +193,4 @@ CONVERT:
 // Helper functions
 func replaceNBSP(s string) string {
 	return strings.ReplaceAll(s, "\u00A0", " ")
-}
-
-func containsUnicodeSpace(s string) bool {
-	for _, r := range s {
-		if unicode.IsSpace(r) && r != '_' {
-			return true
-		}
-	}
-	return false
 }
