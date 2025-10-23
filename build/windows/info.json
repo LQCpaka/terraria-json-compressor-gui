@@ -5,11 +5,11 @@
 	"info": {
 		"0000": {
 			"ProductVersion": "{{.Info.ProductVersion}}",
-			"CompanyName": "{{.Info.CompanyName}}",
-			"FileDescription": "{{.Info.ProductName}}",
+			"CompanyName": "Morph Workshops",
+			"FileDescription": "Terraria JSON Compressor",
 			"LegalCopyright": "{{.Info.Copyright}}",
-			"ProductName": "{{.Info.ProductName}}",
-			"Comments": "{{.Info.Comments}}"
+			"ProductName": "Terraria JSON Compressor",
+			"Comments": "This application made by LQC. Please, do not distribute it without permission."
 		}
 	}
 }
