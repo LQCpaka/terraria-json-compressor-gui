@@ -1,20 +1,22 @@
 
 <p align=center>
   <img src="https://github.com/LQCpaka/terraria-json-compressor-gui/blob/main/frontend/public/images/terria-icon-logo.png"/>
-<p>
-    
-<p align="center">
+  <p align="center">
 
-
-  <img src="https://img.shields.io/badge/JSON-Converter-blue">
+  <img src="https://img.shields.io/badge/Lisence-MIT-white">
+  <img src="https://img.shields.io/badge/Author-LQC-yellow">
+  <img src="https://img.shields.io/badge/JSON-CSV-blue">
   <img src="https://img.shields.io/badge/Vietnam-⭐_Vietnamese-red">
-  <img src="https://img.shields.io/badge/Languuage-Golang-blue">
+  <img src="https://img.shields.io/badge/Language-Golang-blue">
   <img src="https://img.shields.io/badge/Application-GUI-blue">
   <img src="https://img.shields.io/badge/Terraria-JSON-red">
 
 </p>
+  <h1 align="center">TERRARIA JSON COMPRESSOR GUI</h1>
+<p>
+  
 
-# TERRARIA JSON COMPRESSOR GUI
+
 
 ```TJC``` is made by LQC - LE QUOC CAN.
 
