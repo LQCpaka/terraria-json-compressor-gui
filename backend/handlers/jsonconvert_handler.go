@@ -154,7 +154,7 @@ func CompressCSVToJSON(
 	}
 
 CONVERT:
-	// Xác định output path - use temp file if empty
+	// output path - use temp file if empty
 	if outputPath == "" {
 		dir := filepath.Dir(csvPath)
 		base := filepath.Base(csvPath)
