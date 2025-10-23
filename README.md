@@ -1,6 +1,7 @@
 
 <p align=center>
   <img src="https://github.com/LQCpaka/terraria-json-compressor-gui/blob/main/frontend/public/images/terria-icon-logo.png"/>
+  
   <p align="center">
 
   <img src="https://img.shields.io/badge/Lisence-MIT-white">
