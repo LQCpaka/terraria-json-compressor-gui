@@ -5,7 +5,7 @@
     
 <p align="center">
 
-  <img src="https://img.shields.io/github/license/LQCpaka/terraria-json-compressor-gui">
+
   <img src="https://img.shields.io/badge/JSON-Converter-blue">
   <img src="https://img.shields.io/badge/Vietnam-⭐_Vietnamese-red">
   <img src="https://img.shields.io/badge/Languuage-Golang-blue">
@@ -22,7 +22,7 @@ Application made by LQC. For translating purpose. Help people could convert the 
 
 App made with Wails and Golang. With webview architect, made the app could build and run on cross-platform. And React for frontend.
 
-
+## OPERATING SYSTEM - SUPPORT
 <table>
   <tr>
     <th>Operating System</th>
@@ -46,14 +46,14 @@ App made with Wails and Golang. With webview architect, made the app could build
   </tr>
 </table>
 
-## Installations - Builds
+## Installations - Builds 🛠️
 
 > [!NOTE]
 > **Some ways could be outdated. You could fix it yourself or post on issue tab in this repo. I currently only release for windows only, so in future, If I have time, imma gonna do a release on Linux and Mac aswell**.
 
 ___
 
-### LINUX 🐧
+### Linux 🐧
 
 **1. Install Golang programming language. Nodejs - For Frontend support.**
 
@@ -121,14 +121,14 @@ Optional: Universal build for both Intel & Apple Silicon
 ```
 wails build -platform darwin/universal
 ```
-## HOW TO USE
+## How To Use ❓
 
 > [!NOTE]
 > You could find csv and the standard of csv editing for terraria in [Terraria Forum](https://forums.terraria.org/index.php?threads/the-ultimate-guide-to-content-creation-and-use-for-the-terraria-workshop.100652/#languagepack). Also thank you everyone that contributed for that thread.
 
 - Browse your csv file and select it.
 - You could preview your file if you want make sure there is nothing go wrong with error syntax in your file.
-- Press ```Start Compress``` and wait the application build for you.
+- Press ```Start Compress``` and wait the application build for you. After that you will receive a json file. Paste it into localiztion folder of your mod folder and try it.
 <br>
 
 > [!CAUTION]
@@ -137,4 +137,4 @@ wails build -platform darwin/universal
 <br>
 
 > [!TIP]
-> You could use application like excel, sheet or something like that. That helps you editing the file easier. Other methods like using notepad++ or something like that also work fine
+> You could use application like excel, sheet or something like that. That helps you editing the file easier. Other methods like using ```notepad++``` or something like that also work fine
