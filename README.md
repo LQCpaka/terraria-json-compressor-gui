@@ -1,7 +1,7 @@
 
 <p align=center>
   <img src="https://github.com/LQCpaka/terraria-json-compressor-gui/blob/main/frontend/public/images/terria-icon-logo.png"/>
-  
+
   <p align="center">
 
   <img src="https://img.shields.io/badge/Lisence-MIT-white">
@@ -130,7 +130,7 @@ wails build -platform darwin/universal
 > You could find csv and the standard of csv editing for terraria in [Terraria Forum](https://forums.terraria.org/index.php?threads/the-ultimate-guide-to-content-creation-and-use-for-the-terraria-workshop.100652/#languagepack). Also thank you everyone that contributed for that thread.
 
 - Browse your csv file and select it.
-- You could preview your file if you want make sure there is nothing go wrong with error syntax in your file.
+- You could preview your file if you want make sure there is nothing go wrong incase you got some error syntax in your file.
 - Press ```Start Compress``` and wait the application build for you. After that you will receive a json file. Paste it into localiztion folder of your mod folder and try it.
 <br>
 
