@@ -15,3 +15,5 @@
 </p>
 
 # TERRARIA JSON COMPRESSOR GUI
+
+```TJC`` is made by LQC - LE QUOC CAN.
