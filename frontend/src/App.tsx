@@ -92,7 +92,9 @@ function App() {
     return (
         <div className='flex flex-col h-screen p-4 overflow-hidden' id="App">
             <div className='flex-1 overflow-hidden'>
-                <LogViewer logs={
+                <LogViewer 
+                handleResetLogs={() => setLogText([])}
+                logs={
                     <div className="log-content">
                         {LogText.map((log, index) => renderLog(log, index))}
                     </div>
